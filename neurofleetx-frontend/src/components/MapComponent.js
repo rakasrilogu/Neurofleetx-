@@ -1,7 +1,4 @@
 import React from 'react';
-
-// Minimal placeholder that compiles without extra map libraries.
-// Replace with a real map later if desired.
 export default function MapComponent({ vehicles = [] }) {
   return (
     <div style={{ height: 300, background: '#f6f8fa', borderRadius: 8, padding: 8 }}>

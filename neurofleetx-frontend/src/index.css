@@ -1,6 +1,4 @@
-/* ===== Auth card layout (page-specific) ===== */
 
-/* Fullscreen center */
 .g-auth-bg {
   min-height: 100vh;
   min-width: 100vw;
@@ -15,7 +13,7 @@
     linear-gradient(180deg, #f7f9fc 0%, #eef2f7 100%);
 }
 
-/* Card */
+
 .g-auth-card {
   width: 100%;
   max-width: 360px;
@@ -30,7 +28,7 @@
   text-align: center;
 }
 
-/* Brand row */
+
 .g-auth-logo {
   display: flex;
   align-items: center;
@@ -46,11 +44,11 @@
 .g-green { background: #34a853; }
 .g-brand { margin-left: 6px; font-weight: 800; font-size: 22px; color: #202124; letter-spacing: .2px; }
 
-/* Titles */
+
 .g-title { margin: 16px 0 2px; font-size: 24px; font-weight: 700; color: #202124; width: 100%; }
 .g-subtitle { margin: 0 0 18px; font-size: 14px; color: #5f6368; width: 100%; }
 
-/* Errors */
+
 .g-error {
   background: #fdeaea;
   color: #c62828;
@@ -63,7 +61,7 @@
   width: 100%;
 }
 
-/* Form */
+
 .g-form { margin-top: 4px; width: 100%; }
 .g-field { margin-bottom: 12px; width: 100%; position: relative; }
 
@@ -82,7 +80,7 @@
 .g-input::placeholder { color: #9aa0a6; }
 .g-input:focus { border-color: #1a73e8; box-shadow: 0 0 0 3px rgba(26,115,232,.15); }
 
-/* Password toggle — ensures no overlap */
+
 .g-password-toggle {
   position: absolute;
   right: 10px;
@@ -97,7 +95,7 @@
 }
 .g-field .g-input.with-toggle { padding-right: 50px; }
 
-/* Actions */
+
 .g-actions { margin-top: 6px; width: 100%; display: flex; justify-content: center; }
 .g-btn {
   min-width: 120px;
@@ -115,12 +113,12 @@
 .g-btn:active { transform: translateY(1px); }
 .g-btn[disabled] { opacity: .7; cursor: default; }
 
-/* Helper links */
+
 .g-help { margin-top: 16px; width: 100%; text-align: center; }
 .g-help a { color: #1a73e8; text-decoration: none; font-size: 13px; }
 .g-help a:hover { text-decoration: underline; }
 
-/* Responsive */
+
 @media (max-width: 480px) {
   .g-auth-card {
     padding: 22px 12px 16px;

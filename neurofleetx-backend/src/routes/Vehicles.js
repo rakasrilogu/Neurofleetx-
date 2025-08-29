@@ -1,6 +1,5 @@
 const express = require('express');
 const { auth } = require('../utils/authMiddleware');
-
 const router = express.Router();
 
 router.get('/vehicles', auth, (_req, res) => {

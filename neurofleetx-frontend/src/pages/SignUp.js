@@ -23,7 +23,7 @@ export default function SignUp() {
       next.password = "Use 8+ chars, 1 uppercase, 1 number";
     setErrors(next);
     if (Object.keys(next).length) return;
-    // demo: replace with API call
+    
     await new Promise((r) => setTimeout(r, 500));
     alert("Account created!");
   };

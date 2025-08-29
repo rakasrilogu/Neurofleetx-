@@ -15,7 +15,7 @@ export default function Dashboard() {
   const [metrics, setMetrics] = useState({ vehicles: 0, activeTrips: 0, alerts: 0, lastUpdated: null });
   const [vehicles, setVehicles] = useState([]);
 
-  // Load dashboard metrics (protected)
+  
   useEffect(() => {
     const token = localStorage.getItem('token');
     const controller = new AbortController();
@@ -31,7 +31,7 @@ export default function Dashboard() {
     return () => controller.abort();
   }, []);
 
-  // Live vehicles via STOMP over SockJS
+  
   useEffect(() => {
     const sub = connectVehicleTopic(wsUrl, (payload) => {
       if (Array.isArray(payload?.vehicles)) setVehicles(payload.vehicles);

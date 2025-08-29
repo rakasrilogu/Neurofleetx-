@@ -14,11 +14,8 @@ e.preventDefault();
 setShowError(false);
 setLoading(true);
 try {
-// Call backend: POST /api/auth/login
 const data = await loginUser({ email, password });
-// Store token if needed (optional)
 localStorage.setItem("nfxtoken", data.token);
-// Navigate to dashboard
 navigate("/dashboard", { replace: true });
 } catch (err) {
 setShowError(true);

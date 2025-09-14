@@ -2,7 +2,7 @@
 
 NeuroFleetX is a modern platform built to streamline **urban fleet intelligence and management**. By combining **secure JWT authentication**, **real-time WebSocket updates**, and **Google Maps visualization**, it provides a robust and scalable solution for vehicle tracking and operations. The platform is designed for **fleet operators, mobility startups, and smart city initiatives**, offering an intelligent ecosystem that balances usability, performance, and security.  
 
-## ✅ Functional Requirements  
+### ✅ Functional Requirements  
 
 ### User Management & Authentication  
 - The system must allow users to **sign up, log in, and log out securely**.  
@@ -25,7 +25,7 @@ NeuroFleetX is a modern platform built to streamline **urban fleet intelligence 
 - Extend WebSocket channel for alert broadcasting.  
 
 
-## ⚡ Non-Functional Requirements  
+### ⚡ Non-Functional Requirements  
 
 - **Performance**: WebSocket updates must propagate within **<2 seconds** from server to client.  
 - **Scalability**: Stateless JWT authentication and REST APIs ensure horizontal scalability.  
@@ -37,7 +37,7 @@ NeuroFleetX is a modern platform built to streamline **urban fleet intelligence 
 
 ---
 
-## 🧪 Positive Test Cases  
+### 🧪 Positive Test Cases  
 
 ### Authentication Test  
 - **Steps:**  
@@ -65,7 +65,7 @@ NeuroFleetX is a modern platform built to streamline **urban fleet intelligence 
   2. Navigate to the dashboard.  
 - **Expected Result:** Summary metrics (e.g., total vehicles) are displayed correctly.  
 
-## 🔮 Planned Enhancements  
+### 🔮 Planned Enhancements  
 - Role-based access control (Admin, Manager, Driver).  
 - Predictive maintenance alerts powered by AI/ML.  
 - Advanced analytics and traffic-aware route optimization.  

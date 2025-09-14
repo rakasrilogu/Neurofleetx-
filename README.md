@@ -1,4 +1,4 @@
-# NeuroFleetX  
+## NeuroFleetX  
 
 NeuroFleetX is a modern platform built to streamline **urban fleet intelligence and management**. By combining **secure JWT authentication**, **real-time WebSocket updates**, and **Google Maps visualization**, it provides a robust and scalable solution for vehicle tracking and operations. The platform is designed for **fleet operators, mobility startups, and smart city initiatives**, offering an intelligent ecosystem that balances usability, performance, and security.  
 

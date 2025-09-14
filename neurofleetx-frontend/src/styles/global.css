@@ -1,4 +1,3 @@
-/* ===== Base, reset, and generic site-wide styling (no page-specific classes here) ===== */
 :root {
   --primary: #1a73e8;
   --text: #333333;
@@ -43,7 +42,6 @@ button {
 button:hover { background-color: #1558b0; }
 button:disabled { opacity: .7; cursor: default; }
 button:focus-visible { outline: 3px solid rgba(26,115,232,.35); outline-offset: 2px; }
-
 input, select, textarea {
   width: 100%;
   padding: 0.5rem 0.75rem;
@@ -60,7 +58,6 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 3px rgba(26,115,232,.15);
 }
 label { display: block; margin-bottom: .25rem; font-weight: 600; font-size: .9rem; }
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -69,3 +66,4 @@ label { display: block; margin-bottom: .25rem; font-weight: 600; font-size: .9re
     scroll-behavior: auto !important;
   }
 }
+

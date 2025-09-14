@@ -1,6 +1,4 @@
 import React from 'react';
-
-// Minimal placeholder component; swap with Chart.js later if needed.
 export default function AnalyticsChart({ vehicles = [] }) {
   const active = vehicles.filter((v) => v.status === 'active').length;
   const idle = vehicles.filter((v) => v.status === 'idle').length;
@@ -19,3 +17,4 @@ export default function AnalyticsChart({ vehicles = [] }) {
     </div>
   );
 }
+

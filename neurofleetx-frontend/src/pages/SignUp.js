@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signupUser } from "../services/api";
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [showPwd, setShowPwd] = useState(false);
   const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
 
-  const validPassword = (p) =>
-    p.length >= 8 && /[A-Z]/.test(p) && /\d/.test(p); // basic rule
+  const validPassword = (p) => p.length >= 8 && /[A-Z]/.test(p) && /\d/.test(p);
 
   const update = (e) => {
     const { name, value } = e.target;
@@ -23,9 +25,16 @@ export default function SignUp() {
       next.password = "Use 8+ chars, 1 uppercase, 1 number";
     setErrors(next);
     if (Object.keys(next).length) return;
-    // demo: replace with API call
-    await new Promise((r) => setTimeout(r, 500));
-    alert("Account created!");
+
+    setSubmitting(true);
+    try {
+      await signupUser(form);
+      navigate("/", { replace: true });
+    } catch (err) {
+      setErrors((prev) => ({ ...prev, submit: "Sign up failed" }));
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -40,6 +49,9 @@ export default function SignUp() {
         </div>
         <h1 className="g-title">Sign up</h1>
         <p className="g-subtitle">Create an account</p>
+
+        {errors.submit && <div className="g-error">{errors.submit}</div>}
+
         <form className="g-form" onSubmit={submit}>
           <div className="g-field">
             <input
@@ -83,33 +95,22 @@ export default function SignUp() {
               className="g-password-toggle"
               onClick={() => setShowPwd((v) => !v)}
               aria-label="Toggle password visibility"
-              style={{
-                position: "absolute",
-                right: 10,
-                top: "50%",
-                transform: "translateY(-50%)",
-                background: "none",
-                border: "none",
-                color: "#1a73e8",
-                cursor: "pointer",
-                fontWeight: 600,
-                padding: "0 6px"
-              }}
             >
               {showPwd ? "Hide" : "Show"}
             </button>
             {errors.password && <div className="g-error">{errors.password}</div>}
           </div>
           <div className="g-actions">
-            <button className="g-btn" type="submit">
-              Create account
+            <button className="g-btn" type="submit" disabled={submitting}>
+              {submitting ? "Creating…" : "Create account"}
             </button>
           </div>
         </form>
+
         <div className="g-help">
           <Link to="/">Already have an account? Sign in</Link>
         </div>
       </div>
-    </div>
-  );
+    </div>
+  );
 }

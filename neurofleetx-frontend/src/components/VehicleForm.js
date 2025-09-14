@@ -1,45 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { createVehicle } from "../services/api";
 
-export default function VehicleForm({ onAdd }) {
-  const [licensePlate, setLicensePlate] = useState('');
-  const [status, setStatus] = useState('active');
+export default function VehicleForm({ onCreated }) {
+  const [licensePlate, setLicensePlate] = useState("");
+  const [status, setStatus] = useState("active");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const submit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const v = {
-      id: Date.now(),
-      licensePlate: licensePlate || 'NEW-PLATE',
-      location: '0,0',
-      status,
-      mileage: 0,
-      fuelLevel: 100,
-    };
-    onAdd?.(v);
-    setLicensePlate('');
-    setStatus('active');
+    setError("");
+    setLoading(true);
+    try {
+      await createVehicle({ license_plate: licensePlate.trim().toUpperCase(), status });
+      setLicensePlate("");
+      setStatus("active");
+      onCreated && onCreated();
+    } catch (err) {
+      if (err.response) {
+        setError(`Error ${err.response.status}`);
+      } else if (err.request) {
+        setError("Network error");
+      } else {
+        setError("Client setup error");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <form onSubmit={submit} style={{ display: 'grid', gap: 8, maxWidth: 320 }}>
-      <label>
-        License Plate
-        <input
-          type="text"
-          value={licensePlate}
-          onChange={(e) => setLicensePlate(e.target.value)}
-          placeholder="KA-01-AB-1234"
-          style={{ width: '100%' }}
-        />
-      </label>
-      <label>
-        Status
-        <select value={status} onChange={(e) => setStatus(e.target.value)} style={{ width: '100%' }}>
-          <option value="active">active</option>
-          <option value="idle">idle</option>
-          <option value="maintenance">maintenance</option>
-        </select>
-      </label>
-      <button type="submit">Add</button>
+    <form onSubmit={handleSubmit} style={{ display: "grid", gap: 10 }}>
+      {error && <div style={{ color: "red" }}>{error}</div>}
+
+      <input
+        placeholder="KA-01-AB-1234"
+        value={licensePlate}
+        onChange={(e) => setLicensePlate(e.target.value)}
+        required
+      />
+
+      <select value={status} onChange={(e) => setStatus(e.target.value)}>
+        <option value="active">active</option>
+        <option value="idle">idle</option>
+        <option value="maintenance">maintenance</option>
+      </select>
+
+      <button type="submit" disabled={loading}>
+        {loading ? "Adding…" : "Add"}
+      </button>
     </form>
   );
 }

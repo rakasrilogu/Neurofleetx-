@@ -1,8 +1,6 @@
 import SockJS from 'sockjs-client';
 import { Client as StompClient } from '@stomp/stompjs';
 
-// Connects to SockJS endpoint and subscribes to /topic/vehicles.
-// Returns an object that can be passed to disconnectVehicleTopic.
 export function connectVehicleTopic(wsUrl, onMessage) {
   const client = new StompClient({
     debug: () => {},
@@ -13,9 +11,7 @@ export function connectVehicleTopic(wsUrl, onMessage) {
         try {
           const body = JSON.parse(msg.body);
           onMessage?.(body);
-        } catch (e) {
-          // ignore bad frames
-        }
+        } catch (e) {}
       });
     },
   });
@@ -27,7 +23,5 @@ export function connectVehicleTopic(wsUrl, onMessage) {
 export function disconnectVehicleTopic(handle) {
   try {
     handle?.client?.deactivate();
-  } catch {
-    // ignore
-  }
+  } catch {}
 }
